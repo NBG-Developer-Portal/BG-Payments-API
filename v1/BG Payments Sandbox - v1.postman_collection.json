@@ -579,7 +579,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -610,7 +610,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{payment-id}}/status",
+									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-payment-id}}/status",
 									"protocol": "https",
 									"host": [
 										"{{host}}"
@@ -631,7 +631,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -895,7 +895,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -1210,7 +1210,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -1262,7 +1262,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -1449,7 +1449,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
@@ -1636,7 +1636,7 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "sandbox_id",
+										"key": "sandbox-id",
 										"value": "{{sandbox-id}}",
 										"type": "text"
 									},
