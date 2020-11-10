@@ -16,7 +16,7 @@ We will create our sandbox by making an **HTTP POST** request to the following U
 Request Body:
 ```json
  {
-   "sandbox-id": "my-payments-sandbox"
+   "sandboxΙd": "my-payments-sandbox"
  }
 ``` 
 
@@ -92,9 +92,15 @@ You send **/v1/payments/sepa-credit-transfers** request to make an immediate SEP
     "remittanceInformationUnstructured": "Some unstructed information",
     "chargeBearer": "Shared",
     "_links": {
-        "scaRedirect": "https://microsites.nbg.gr/bg.ob.pisp.sandbox/payments/authorize?payment_id=88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0",
-        "self": "https://apis.nbg.gr/sandbox/bg.openbanking.payments/oauth2/v1/payments/sepa-credit-transfers/88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0",
-        "status": "https://apis.nbg.gr/sandbox/bg.openbanking.payments/oauth2/v1/payments/sepa-credit-transfers/88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0/status"
+        "scaRedirect": {
+           "href": "https://microsites.nbg.gr/bg.ob.pisp.sandbox/payments/authorize?payment_id=88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0"
+         },
+        "self": {
+           "href": "https://apis.nbg.gr/sandbox/bg.openbanking.payments/oauth2/v1/payments/sepa-credit-transfers/88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0"
+        },
+        "status": {
+           "href": "https://apis.nbg.gr/sandbox/bg.openbanking.payments/oauth2/v1/payments/sepa-credit-transfers/88fc8c50-252d-4aa6-a83b-21e1ba8a3cc0/status"
+        }
     }
 }
 
