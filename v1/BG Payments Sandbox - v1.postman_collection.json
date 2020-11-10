@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "00dabc9b-a5bc-4c5a-979e-7671622f9036",
+		"_postman_id": "6189d2ea-eb9a-4c70-94c9-12a030cb38e9",
 		"name": "BG Payments Sandbox - v1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,52 +9,9 @@
 			"name": "Sandbox",
 			"item": [
 				{
-					"name": "Create Sandbox",
+					"name": "Delete Sandbox",
 					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Client-Id",
-								"value": "{{client-id}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"sandboxId\": \"{{sandbox-id}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{host}}/sandbox",
-							"protocol": "https",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"sandbox"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Sandbox",
-					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
@@ -82,9 +39,9 @@
 					"response": []
 				},
 				{
-					"name": "Delete Sandbox",
+					"name": "Get Sandbox",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
@@ -153,6 +110,49 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create Sandbox",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Client-Id",
+								"value": "{{client-id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sandboxId\": \"{{sandbox-id}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{host}}/sandbox",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sandbox"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -164,9 +164,104 @@
 					"name": "SEPA Payments",
 					"item": [
 						{
-							"name": "Get Payment Initiation Status",
+							"name": "Initiate Payment (NBG to NBG)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6696e967-c45e-453b-9b22-a5c55aefd35d",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
-								"method": "GET",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Payment (NBG to Other)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f767eb34-2aae-4121-8490-8d7f274debbb",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
 								"header": [
 									{
 										"key": "sandbox-id",
@@ -199,17 +294,178 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{payment-id}}/status",
+									"raw": "https://{{host}}/payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"payments",
-										"sepa-credit-transfers",
-										"{{payment-id}}",
-										"status"
+										"sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Scheduled Payment (NBG to NBG)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8ece7b60-344b-4c54-b78d-eebf00cc2e89",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Scheduled Payment (NBG to Other)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0e1737a3-70fa-438f-be46-62b249ac22a7",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"sepa-credit-transfers"
 									]
 								}
 							},
@@ -267,7 +523,7 @@
 							"response": []
 						},
 						{
-							"name": "Get Scheduled Payment Initiation Status",
+							"name": "Get Payment Initiation Status",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -303,7 +559,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}/status",
+									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{payment-id}}/status",
 									"protocol": "https",
 									"host": [
 										"{{host}}"
@@ -311,7 +567,7 @@
 									"path": [
 										"payments",
 										"sepa-credit-transfers",
-										"{{sepa-scheduled-payment-id}}",
+										"{{payment-id}}",
 										"status"
 									]
 								}
@@ -370,27 +626,9 @@
 							"response": []
 						},
 						{
-							"name": "Initiate Scheduled Payment (NBG to Other)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "e2a963ca-b7ed-4bd5-9526-14246fda2567",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
+							"name": "Get Scheduled Payment Initiation Status",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "sandbox-id",
@@ -423,255 +661,17 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}/status",
 									"protocol": "https",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"payments",
-										"sepa-credit-transfers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Initiate Scheduled Payment (NBG to NBG)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "a3d8c9af-ff80-4190-9f85-1a9ddefda03c",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"sepa-credit-transfers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Initiate Payment (NBG to Other)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "c87bec38-b6a4-43b4-a2c0-85f902e3f088",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"sepa-credit-transfers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Initiate Payment (NBG to NBG)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "4e5d8a45-ec6c-4663-b473-15ad1765858c",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									},
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"sepa-credit-transfers"
+										"sepa-credit-transfers",
+										"{{sepa-scheduled-payment-id}}",
+										"status"
 									]
 								}
 							},
@@ -685,115 +685,12 @@
 					"name": "SEPA Periodic Payments",
 					"item": [
 						{
-							"name": "Get Payment Initiation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}/status",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"periodic-payments",
-										"sepa-credit-transfers",
-										"{{sepa-periodic-payment-id}}",
-										"status"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Payment Information",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"periodic-payments",
-										"sepa-credit-transfers",
-										"{{sepa-periodic-payment-id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Initiate Payment (NBG to NBG)",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "c5941842-aacb-42f2-8676-163c4bd02f31",
+										"id": "d7d7f4be-3067-45a0-accf-9ba2ac5b5257",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -870,7 +767,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "aa9a343a-e1d3-4ca5-9994-70dc0d4a4508",
+										"id": "eaf2775b-e11e-4920-8592-f68d4eb01242",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -940,6 +837,109 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Payment Information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"periodic-payments",
+										"sepa-credit-transfers",
+										"{{sepa-periodic-payment-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment Initiation Status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}/status",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"periodic-payments",
+										"sepa-credit-transfers",
+										"{{sepa-periodic-payment-id}}",
+										"status"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -948,6 +948,160 @@
 				{
 					"name": "Cross Border Payments",
 					"item": [
+						{
+							"name": "Initiate Payment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "545e6d31-8cc7-4713-9819-a4732a541677",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"cross-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"cross-border-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Scheduled Payment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ff8f5216-f681-44e8-813d-d7d9a3c48494",
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"cross-scheduled-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"cross-border-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "Get Payment Information",
 							"request": {
@@ -994,6 +1148,58 @@
 										"payments",
 										"cross-border-credit-transfers",
 										"{{cross-payment-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment Initiation Status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-payment-id}}/status",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payments",
+										"cross-border-credit-transfers",
+										"{{cross-payment-id}}",
+										"status"
 									]
 								}
 							},
@@ -1101,212 +1307,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Get Payment Initiation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-payment-id}}/status",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"cross-border-credit-transfers",
-										"{{cross-payment-id}}",
-										"status"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Initiate Payment",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "4cee27e6-ce3a-4be9-9086-940721fc0d7c",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"cross-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"cross-border-credit-transfers"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Initiate Scheduled Payment",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "fa320e43-46e9-44d8-974a-c5f603050fc2",
-										"exec": [
-											"var responseCode = pm.response.code;\r",
-											"if(responseCode == 201)\r",
-											"{\r",
-											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
-											"        postman.setEnvironmentVariable(\"cross-scheduled-payment-id\", data.paymentId);\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}s",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"payments",
-										"cross-border-credit-transfers"
-									]
-								}
-							},
-							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1316,115 +1316,12 @@
 					"name": "Cross Border Periodic Payments",
 					"item": [
 						{
-							"name": "Get Payment Initiation Status",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}/status",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"periodic-payments",
-										"cross-border-credit-transfers",
-										"{{cross-periodic-payment-id}}",
-										"status"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Payment Information",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"periodic-payments",
-										"cross-border-credit-transfers",
-										"{{cross-periodic-payment-id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Initiate Payment",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
-										"id": "a527081e-e8d5-454f-abe8-8f9a3a62c943",
+										"id": "bbd85572-b9d2-4cca-9d55-5e5627bcb760",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1494,6 +1391,109 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Payment Information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"periodic-payments",
+										"cross-border-credit-transfers",
+										"{{cross-periodic-payment-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Payment Initiation Status",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}/status",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"periodic-payments",
+										"cross-border-credit-transfers",
+										"{{cross-periodic-payment-id}}",
+										"status"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1508,7 +1508,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "195bb30e-e998-46be-9e33-9da38712a9d8",
+										"id": "43024d8d-5eb1-476a-8d29-33c4a7c56cba",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1580,6 +1580,57 @@
 							"response": []
 						},
 						{
+							"name": "Get Payment Information",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox-id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client-id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{host}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}",
+									"protocol": "https",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"bulk-payments",
+										"pain.001-sepa-credit-transfers",
+										"{{bulk-payment-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Payment Initiation Status",
 							"request": {
 								"method": "GET",
@@ -1626,57 +1677,6 @@
 										"pain.001-sepa-credit-transfers",
 										"{{bulk-payment-id}}",
 										"status"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Payment Information",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
-										"type": "text"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Client-Id",
-										"value": "{{client-id}}",
-										"type": "text"
-									},
-									{
-										"key": "X-Request-ID",
-										"value": "{{$guid}}",
-										"type": "text"
-									},
-									{
-										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://{{host}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}",
-									"protocol": "https",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"bulk-payments",
-										"pain.001-sepa-credit-transfers",
-										"{{bulk-payment-id}}"
 									]
 								}
 							},
@@ -1754,7 +1754,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c6008529-2b25-4d81-a3a6-a3328b112062",
+				"id": "5bc69911-f5a6-4133-806f-9eb9cb166a85",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1764,7 +1764,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "978960db-a828-40e5-8375-b9cece51123f",
+				"id": "26ae7933-673a-474c-a351-ee4d1aeda75e",
 				"type": "text/javascript",
 				"exec": [
 					""
