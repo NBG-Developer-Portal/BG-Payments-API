@@ -559,7 +559,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{payment-id}}/status",
+									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-payment-id}}/status",
 									"protocol": "https",
 									"host": [
 										"{{host}}"
@@ -567,7 +567,7 @@
 									"path": [
 										"payments",
 										"sepa-credit-transfers",
-										"{{payment-id}}",
+										"{{sepa-payment-id}}",
 										"status"
 									]
 								}
