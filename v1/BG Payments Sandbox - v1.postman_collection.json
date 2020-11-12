@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6189d2ea-eb9a-4c70-94c9-12a030cb38e9",
+		"_postman_id": "e4a0b428-c29a-417d-baa7-85e92f64d6cc",
 		"name": "BG Payments Sandbox - v1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,19 +20,19 @@
 							},
 							{
 								"key": "Client-Id",
-								"value": "{{client-id}}",
+								"value": "{{client_id}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://{{host}}/sandbox/{{sandbox-id}}",
+							"raw": "https://{{root_url}}/sandbox/{{sandbox_id}}",
 							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"{{root_url}}"
 							],
 							"path": [
 								"sandbox",
-								"{{sandbox-id}}"
+								"{{sandbox_id}}"
 							]
 						}
 					},
@@ -50,19 +50,19 @@
 							},
 							{
 								"key": "Client-Id",
-								"value": "{{client-id}}",
+								"value": "{{client_id}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://{{host}}/sandbox/{{sandbox-id}}",
+							"raw": "https://{{root_url}}/sandbox/{{sandbox_id}}",
 							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"{{root_url}}"
 							],
 							"path": [
 								"sandbox",
-								"{{sandbox-id}}"
+								"{{sandbox_id}}"
 							]
 						}
 					},
@@ -85,13 +85,13 @@
 							},
 							{
 								"key": "Client-Id",
-								"value": "{{client-id}}",
+								"value": "{{client_id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sandboxId\": \"{{sandbox-id}}\",\r\n    \"users\": [\r\n        {\r\n            \"userId\": \"UserId\",\r\n            \"smsOtpMobileNumber\": \"69xxxxxxxx\",\r\n            \"payments\": [],\r\n            \"accounts\": [\r\n                {\r\n                    \"description\": \"My Family Account\",\r\n                    \"currency\": \"EUR\",\r\n                    \"iban\": \"GR3201106970000069774934603\",\r\n                    \"balance\": 1000.00\r\n                },\r\n                {\r\n                    \"description\": \"My Savings Account\",\r\n                    \"currency\": \"EUR\",\r\n                    \"iban\": \"GR7501102520000025275533583\",\r\n                    \"balance\": 650.75\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"sandboxId\": \"{{sandbox_id}}\",\r\n    \"users\": [\r\n        {\r\n            \"userId\": \"{{user_id}}\",\r\n            \"smsOtpMobileNumber\": \"{{user_phone_number}}\",\r\n            \"payments\": [],\r\n            \"accounts\": [\r\n                {\r\n                    \"description\": \"My Family Account\",\r\n                    \"currency\": \"EUR\",\r\n                    \"iban\": \"GR3201106970000069774934603\",\r\n                    \"balance\": 1000.00\r\n                },\r\n                {\r\n                    \"description\": \"My Savings Account\",\r\n                    \"currency\": \"EUR\",\r\n                    \"iban\": \"GR7501102520000025275533583\",\r\n                    \"balance\": 650.75\r\n                },\r\n                {\r\n                    \"description\": \"My Secret Account\",\r\n                    \"currency\": \"EUR\",\r\n                    \"iban\": \"GR7501102520000025275533585\",\r\n                    \"balance\": 480.30\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -99,10 +99,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{host}}/sandbox",
+							"raw": "https://{{root_url}}/sandbox",
 							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"{{root_url}}"
 							],
 							"path": [
 								"sandbox"
@@ -128,13 +128,13 @@
 							},
 							{
 								"key": "Client-Id",
-								"value": "{{client-id}}",
+								"value": "{{client_id}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sandboxId\": \"{{sandbox-id}}\"\r\n}",
+							"raw": "{\r\n    \"sandboxId\": \"{{sandbox_id}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -142,10 +142,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://{{host}}/sandbox",
+							"raw": "https://{{root_url}}/sandbox",
 							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"{{root_url}}"
 							],
 							"path": [
 								"sandbox"
@@ -169,7 +169,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "6696e967-c45e-453b-9b22-a5c55aefd35d",
+										"id": "88498150-8517-4981-8139-dbbe6f2f9461",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -208,12 +208,12 @@
 									},
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									}
 								],
@@ -227,10 +227,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -246,7 +246,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f767eb34-2aae-4121-8490-8d7f274debbb",
+										"id": "f5b777a7-5da2-4b35-a73d-e749bde88612",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -265,7 +265,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -280,7 +280,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -304,10 +304,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -323,7 +323,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8ece7b60-344b-4c54-b78d-eebf00cc2e89",
+										"id": "17267256-4363-4f85-b7ac-21ebc00b3ebb",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -342,7 +342,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -357,7 +357,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -381,10 +381,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -400,7 +400,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0e1737a3-70fa-438f-be46-62b249ac22a7",
+										"id": "7cd9548d-77bd-4778-9e41-1f7083298180",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -419,7 +419,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -434,7 +434,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -458,10 +458,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -478,7 +478,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -493,7 +493,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -508,10 +508,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-payment-id}}",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers/{{sepa-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -529,7 +529,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -544,7 +544,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -559,10 +559,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-payment-id}}/status",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers/{{sepa-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -581,7 +581,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -596,7 +596,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -611,10 +611,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -632,7 +632,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -647,7 +647,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -662,10 +662,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}/status",
+									"raw": "https://{{root_url}}/payments/sepa-credit-transfers/{{sepa-scheduled-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -690,7 +690,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d7d7f4be-3067-45a0-accf-9ba2ac5b5257",
+										"id": "f9904240-05b6-4616-8d24-599c5f098581",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -709,7 +709,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -724,7 +724,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -748,10 +748,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/periodic-payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -767,7 +767,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "eaf2775b-e11e-4920-8592-f68d4eb01242",
+										"id": "c1f539dc-d75b-449a-82b9-1dce6a74f61c",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -786,7 +786,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -801,7 +801,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -825,10 +825,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers",
+									"raw": "https://{{root_url}}/periodic-payments/sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -845,7 +845,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -860,7 +860,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -875,10 +875,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}",
+									"raw": "https://{{root_url}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -896,7 +896,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -911,7 +911,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -926,10 +926,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}/status",
+									"raw": "https://{{root_url}}/periodic-payments/sepa-credit-transfers/{{sepa-periodic-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -954,7 +954,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "545e6d31-8cc7-4713-9819-a4732a541677",
+										"id": "1eb309fd-fcf5-405c-98d5-7ebb1207a297",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -973,7 +973,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -988,7 +988,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1012,10 +1012,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1031,7 +1031,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ff8f5216-f681-44e8-813d-d7d9a3c48494",
+										"id": "fdd651db-68b2-4396-b6c7-512ed2e2cb0f",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1050,7 +1050,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1065,7 +1065,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1075,7 +1075,7 @@
 									},
 									{
 										"key": "PSU-IP-Address",
-										"value": "{{$randomIP}}s",
+										"value": "{{$randomIP}}",
 										"type": "text"
 									}
 								],
@@ -1089,10 +1089,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1109,7 +1109,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1124,7 +1124,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1139,10 +1139,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-payment-id}}",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers/{{cross-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1160,7 +1160,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1175,7 +1175,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1190,10 +1190,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-payment-id}}/status",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers/{{cross-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1212,7 +1212,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1227,7 +1227,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1242,10 +1242,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-scheduled-payment-id}}",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers/{{cross-scheduled-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1263,7 +1263,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1278,7 +1278,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1293,10 +1293,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/payments/cross-border-credit-transfers/{{cross-scheduled-payment-id}}/status",
+									"raw": "https://{{root_url}}/payments/cross-border-credit-transfers/{{cross-scheduled-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"payments",
@@ -1321,7 +1321,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "bbd85572-b9d2-4cca-9d55-5e5627bcb760",
+										"id": "9f569b13-02c1-4af1-b475-090ce2d0b545",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1340,7 +1340,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1355,7 +1355,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1379,10 +1379,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers",
+									"raw": "https://{{root_url}}/periodic-payments/cross-border-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -1399,7 +1399,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1414,7 +1414,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1429,10 +1429,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}",
+									"raw": "https://{{root_url}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -1450,7 +1450,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1465,7 +1465,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1480,10 +1480,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}/status",
+									"raw": "https://{{root_url}}/periodic-payments/cross-border-credit-transfers/{{cross-periodic-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"periodic-payments",
@@ -1508,7 +1508,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "43024d8d-5eb1-476a-8d29-33c4a7c56cba",
+										"id": "399a311d-b41a-4e45-95b3-8a99b7403b68",
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1527,7 +1527,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1542,7 +1542,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1566,10 +1566,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://{{host}}/bulk-payments/pain.001-sepa-credit-transfers",
+									"raw": "https://{{root_url}}/bulk-payments/pain.001-sepa-credit-transfers",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"bulk-payments",
@@ -1586,7 +1586,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1601,7 +1601,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1616,10 +1616,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}",
+									"raw": "https://{{root_url}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"bulk-payments",
@@ -1637,7 +1637,7 @@
 								"header": [
 									{
 										"key": "sandbox-id",
-										"value": "{{sandbox-id}}",
+										"value": "{{sandbox_id}}",
 										"type": "text"
 									},
 									{
@@ -1652,7 +1652,7 @@
 									},
 									{
 										"key": "Client-Id",
-										"value": "{{client-id}}",
+										"value": "{{client_id}}",
 										"type": "text"
 									},
 									{
@@ -1667,10 +1667,10 @@
 									}
 								],
 								"url": {
-									"raw": "https://{{host}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}/status",
+									"raw": "https://{{root_url}}/bulk-payments/pain.001-sepa-credit-transfers/{{bulk-payment-id}}/status",
 									"protocol": "https",
 									"host": [
-										"{{host}}"
+										"{{root_url}}"
 									],
 									"path": [
 										"bulk-payments",
@@ -1694,33 +1694,33 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
-				"key": "scope",
-				"value": "{{scope}}",
-				"type": "string"
-			},
-			{
 				"key": "clientSecret",
-				"value": "{{client-secret}}",
+				"value": "{{client_secret}}",
 				"type": "string"
 			},
 			{
 				"key": "clientId",
-				"value": "{{client-id}}",
+				"value": "{{client_id}}",
 				"type": "string"
 			},
 			{
 				"key": "accessTokenUrl",
-				"value": "{{access-token-url}}",
+				"value": "{{token_url}}",
 				"type": "string"
 			},
 			{
 				"key": "authUrl",
-				"value": "{{auth-url}}",
+				"value": "{{authorize_url}}",
 				"type": "string"
 			},
 			{
 				"key": "redirect_uri",
-				"value": "{{callback-url}}",
+				"value": "{{callback_url}}",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{scope}}",
 				"type": "string"
 			},
 			{
@@ -1754,7 +1754,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5bc69911-f5a6-4133-806f-9eb9cb166a85",
+				"id": "ca1c4550-8d09-44c5-a3b4-1a7a5c5de08b",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1764,7 +1764,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "26ae7933-673a-474c-a351-ee4d1aeda75e",
+				"id": "2b48811a-9902-49be-b45a-8f15484bc95f",
 				"type": "text/javascript",
 				"exec": [
 					""
