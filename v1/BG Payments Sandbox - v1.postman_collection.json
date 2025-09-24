@@ -219,7 +219,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -296,7 +296,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -373,7 +373,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -450,7 +450,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -466,6 +466,162 @@
 									"path": [
 										"payments",
 										"sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Instant Payment (NBG to NBG)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox_id}}",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client_id}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{root_url}}/payments/instant-sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"payments",
+										"instant-sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Initiate Instant Payment (NBG to Other)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox_id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client_id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{root_url}}/payments/instant-sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"payments",
+										"instant-sepa-credit-transfers"
 									]
 								}
 							},
@@ -740,7 +896,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"startDate\": \"{{periodic-start-date}}\",\r\n    \"numberOfPayments\": \"{{periodic-number-of-payments}}\",\r\n    \"frequency\": \"{{periodic-frequency}}\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"startDate\": \"{{periodic-start-date}}\",\r\n    \"numberOfPayments\": \"{{periodic-number-of-payments}}\",\r\n    \"frequency\": \"{{periodic-frequency}}\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1004,7 +1160,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1081,7 +1237,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\",\r\n    \"priorityCode\": \"{{priority-code}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1580,6 +1736,84 @@
 							"response": []
 						},
 						{
+							"name": "Initiate Instant Payment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseCode = pm.response.code;\r",
+											"if(responseCode == 201)\r",
+											"{\r",
+											"    var data = JSON.parse(responseBody);\r",
+											"    if(data !== undefined)\r",
+											"        postman.setEnvironmentVariable(\"bulk-payment-id\", data.paymentId);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox_id}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client_id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{file-payment-xml}}",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{root_url}}/bulk-payments/pain.001-instant-sepa-credit-transfers",
+									"protocol": "https",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"bulk-payments",
+										"pain.001-instant-sepa-credit-transfers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get Payment Information",
 							"request": {
 								"method": "GET",
@@ -1735,7 +1969,7 @@
 			},
 			{
 				"key": "accessToken",
-				"value": "93e3b9ea80b773980206772ec13c2aacca94abe6c6d49da7f0d633f5b10ddad2",
+				"value": "",
 				"type": "string"
 			},
 			{
