@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "e4a0b428-c29a-417d-baa7-85e92f64d6cc",
+		"_postman_id": "a2fc8393-25df-4c1e-916d-a269b268e151",
 		"name": "BG Payments Sandbox - v1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15114953"
 	},
 	"item": [
 		{
@@ -154,8 +155,8 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+								
 		},
 		{
 			"name": "Operations",
@@ -169,17 +170,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "88498150-8517-4981-8139-dbbe6f2f9461",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -246,17 +251,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f5b777a7-5da2-4b35-a73d-e749bde88612",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -323,17 +332,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "17267256-4363-4f85-b7ac-21ebc00b3ebb",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -373,7 +386,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2026-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -400,17 +413,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7cd9548d-77bd-4778-9e41-1f7083298180",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-scheduled-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -450,7 +467,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2026-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -482,8 +499,10 @@
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
 										"type": "text/javascript",
@@ -560,8 +579,10 @@
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
 										"type": "text/javascript",
@@ -833,9 +854,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+								   
+								 
 				},
 				{
 					"name": "SEPA Periodic Payments",
@@ -846,17 +867,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f9904240-05b6-4616-8d24-599c5f098581",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-periodic-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -923,17 +948,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c1f539dc-d75b-449a-82b9-1dce6a74f61c",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"sepa-periodic-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1097,9 +1126,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+								   
+								 
 				},
 				{
 					"name": "Cross Border Payments",
@@ -1110,17 +1139,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1eb309fd-fcf5-405c-98d5-7ebb1207a297",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"cross-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1187,17 +1220,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "fdd651db-68b2-4396-b6c7-512ed2e2cb0f",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"cross-scheduled-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1237,7 +1274,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2020-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
+									"raw": "{\r\n    \"endToEndIdentification\": \"endToEndIdentification\",\r\n    \"debtorAccount\": {\r\n        \"iban\": \"{{debtor-account}}\",\r\n        \"currency\": \"{{debtor-currency}}\"\r\n    },\r\n    \"instructedAmount\": {\r\n        \"currency\": \"EUR\",\r\n        \"amount\": \"0.01\"\r\n    },\r\n    \"creditorAccount\": {\r\n        \"iban\": \"{{creditor-account}}\",\r\n        \"currency\": \"{{creditor-currency}}\"\r\n    },\r\n    \"creditorName\": \"{{creditor-name}}\",\r\n    \"remittanceInformationUnstructured\": \"Some unstructed information\",\r\n    \"requestedExecutionDate\": \"2026-12-31\",\r\n    \"chargeBearer\": \"{{charge-bearer}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1464,9 +1501,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+								   
+								 
 				},
 				{
 					"name": "Cross Border Periodic Payments",
@@ -1477,17 +1514,21 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "9f569b13-02c1-4af1-b475-090ce2d0b545",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
 											"{\r",
 											"    var data = JSON.parse(responseBody);\r",
-											"    if(data !== undefined)\r",
+											"    if(data !== undefined) {\r",
 											"        postman.setEnvironmentVariable(\"cross-periodic-payment-id\", data.paymentId);\r",
+											"        postman.setEnvironmentVariable(\"payment-id\", data.paymentId);\r",
+											"    }\r",
 											"}"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1651,9 +1692,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+								   
+								 
 				},
 				{
 					"name": "Bulk Payments (File Payments)",
@@ -1664,7 +1705,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "399a311d-b41a-4e45-95b3-8a99b7403b68",
+													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1916,12 +1957,121 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
+				},
+				{
+					"name": "VoP",
+					"item": [
+						{
+							"name": "Payee Verifications",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox_id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client_id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{root_url}}/payee-verifications/{{payment-id}}",
+									"protocol": "https",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"payee-verifications",
+										"{{payment-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Bulk Payee Verifications",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "sandbox-id",
+										"value": "{{sandbox_id}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Client-Id",
+										"value": "{{client_id}}",
+										"type": "text"
+									},
+									{
+										"key": "X-Request-ID",
+										"value": "{{$guid}}",
+										"type": "text"
+									},
+									{
+										"key": "PSU-IP-Address",
+										"value": "{{$randomIP}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{root_url}}/bulk-payee-verifications/{{bulk-payment-id}}?lang=el",
+									"protocol": "https",
+									"host": [
+										"{{root_url}}"
+									],
+									"path": [
+										"bulk-payee-verifications",
+										"{{bulk-payment-id}}"
+									],
+									"query": [
+										{
+											"key": "lang",
+											"value": "el"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+								
 		}
 	],
 	"auth": {
@@ -1988,7 +2138,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ca1c4550-8d09-44c5-a3b4-1a7a5c5de08b",
+												 
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1998,13 +2148,13 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2b48811a-9902-49be-b45a-8f15484bc95f",
+												 
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
+							  
 }
