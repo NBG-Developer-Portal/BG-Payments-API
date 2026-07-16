@@ -156,7 +156,6 @@
 					"response": []
 				}
 			]
-								
 		},
 		{
 			"name": "Operations",
@@ -170,7 +169,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -219,6 +217,16 @@
 									{
 										"key": "Client-Id",
 										"value": "{{client_id}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -251,7 +259,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -301,6 +308,16 @@
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
 										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -332,7 +349,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -381,6 +397,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -413,7 +439,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -462,6 +487,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -543,6 +578,16 @@
 										"key": "Client-Id",
 										"value": "{{client_id}}",
 										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -622,6 +667,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -855,8 +910,6 @@
 							"response": []
 						}
 					]
-								   
-								 
 				},
 				{
 					"name": "SEPA Periodic Payments",
@@ -867,7 +920,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -916,6 +968,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -948,7 +1010,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -997,6 +1058,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -1127,8 +1198,6 @@
 							"response": []
 						}
 					]
-								   
-								 
 				},
 				{
 					"name": "Cross Border Payments",
@@ -1139,7 +1208,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1189,6 +1257,16 @@
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
 										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1220,7 +1298,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1269,6 +1346,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -1502,8 +1589,6 @@
 							"response": []
 						}
 					]
-								   
-								 
 				},
 				{
 					"name": "Cross Border Periodic Payments",
@@ -1514,7 +1599,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1563,6 +1647,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -1693,8 +1787,6 @@
 							"response": []
 						}
 					]
-								   
-								 
 				},
 				{
 					"name": "Bulk Payments (File Payments)",
@@ -1705,7 +1797,6 @@
 								{
 									"listen": "test",
 									"script": {
-													   
 										"exec": [
 											"var responseCode = pm.response.code;\r",
 											"if(responseCode == 201)\r",
@@ -1750,6 +1841,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -1828,6 +1929,16 @@
 									{
 										"key": "PSU-IP-Address",
 										"value": "{{$randomIP}}",
+										"type": "text"
+									},
+									{
+										"key": "TPP-Callback-Url",
+										"value": "{{callback-url}}",
+										"type": "text"
+									},
+									{
+										"key": "X-App-To-App-Redirect",
+										"value": "true",
 										"type": "text"
 									}
 								],
@@ -2071,7 +2182,6 @@
 					]
 				}
 			]
-								
 		}
 	],
 	"auth": {
@@ -2138,7 +2248,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-												 
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2148,7 +2257,6 @@
 		{
 			"listen": "test",
 			"script": {
-												 
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2156,5 +2264,4 @@
 			}
 		}
 	]
-							  
 }
